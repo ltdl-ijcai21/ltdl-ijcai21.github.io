@@ -35,7 +35,7 @@
      
      <!-- Magnific Popup core CSS file -->
      <link rel="stylesheet" href="css/magnific-popup.css"> 
-     
+     <script src="js/vue.js"></script>
      <script src="js/modernizr-2.8.3.min.js"></script>  <!-- Modernizr /-->
      <!--[if IE 9]>
          <script src="js/PIE_IE9.js"></script>
@@ -128,6 +128,13 @@
                      <h3 class="section-heading" style='text-align: justify;color:#164FC9'>Schedule</h3>
         <div id="controller">
           <div id='row fadeInRightBig'>
+           
+           <div class="title">
+            <span v-for="(item,index) of country"  :class="currentCountry == index ? 'titleItemSelect' : 'titleItem'" @click="changeIndex(index)">
+              {{item}}
+            </span>
+          </div>
+           
           <div class="wow">
 <h4 class="section-heading" style="text-align: justify;color:#34495E">Aug 21 (12AM – 6AM) UTC,
 Friday Evening in Montreal</h4>
@@ -238,6 +245,28 @@ Friday Evening in Montreal</h4>
        });
      
      </script>
+  
+  
+  <script>
+  var app = new Vue({
+    el: '#controller',
+    data: {
+      country: ['China', 'German'],
+      currentCountry: 0,
+      tableData: [
+        ['(Day +1)10:00am-(Day +1)10:10am','(Day +1)10:10am-(Day +1)10:50am','(Day +1)10:50am-(Day +1)11:25am','(Day +1)11:25am-(Day +1)12:15pm','(Day +1)5:00pm-(Day +1)5:35pm','(Day +1)5:35pm-(Day +1)6:10pm','(Day +1)6:10pm-(Day +1)6:45pm'],
+        ['(Day +1)3:00am-(Day +1)3:10am','(Day +1)3:10am-(Day +1)3:50am','(Day +1)3:50am-(Day +1)4:25am','(Day +1)4:25am-(Day +1)5:15am','(Day +1)10:00am-(Day +1)10:35am','(Day +1)10:35am-(Day +1)11:10am','(Day +1)11:10am-(Day +1)11:45am']
+      ]
+    },
+    methods: {
+      changeIndex(i) {
+        this.currentCountry = i
+      }
+    }
+  })
+  </script>
+  
+  
      <!-- Smoothscroll -->
      <script type="text/javascript" src="js/jquery.corner.js"></script> 
      <script src="js/wow.min.js"></script>
@@ -248,8 +277,29 @@ Friday Evening in Montreal</h4>
      <script src="js/uiMorphingButton_inflow.js"></script>
      <!-- Magnific Popup core JS file -->
      <script src="js/jquery.magnific-popup.js"></script> 
- </body>
- 
+ </body> 
  </html>
+
+
+<style>
+  .title {
+    width:100%;
+  }
+  .titleItem {
+    margin-right: 40px;
+    font-size: 15px;
+  }
+  .titleItemSelect {
+    margin-right: 40px;
+    color: #1abc9c;
+    font-weight: 600;
+    font-size: 15px;
+
+  }
+</style>
+
+
+
+
  
 
